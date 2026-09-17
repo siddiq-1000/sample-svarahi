@@ -48,15 +48,6 @@ export const MarketRateSection: React.FC<MarketRateSectionProps> = ({
   const [timeframe, setTimeframe] = useState<TimeframePeriod>('7D');
   const [activeRateCardId, setActiveRateCardId] = useState<string>('gold_24k');
 
-  // Price Alert Form State (docked on the right-hand side)
-  const [alerts, setAlerts] = useState<PriceAlert[]>(initialPriceAlerts);
-  const [alertMetalId, setAlertMetalId] = useState<MetalType>('gold_24k');
-  const [alertCondition, setAlertCondition] = useState<'below' | 'above'>('below');
-  const [alertTargetPrice, setAlertTargetPrice] = useState<number>(85.00);
-  const [alertEmail, setAlertEmail] = useState<string>('');
-  const [alertSuccessMessage, setAlertSuccessMessage] = useState<string | null>(null);
-  const [testAlertToast, setTestAlertToast] = useState<string | null>(null);
-
   const currency = currencyExchangeRates[selectedCurrency];
 
   const getMultiplier = () => {
@@ -66,6 +57,25 @@ export const MarketRateSection: React.FC<MarketRateSectionProps> = ({
   };
 
   const mult = getMultiplier();
+
+  // Price Alert Form State (docked on the right-hand side)
+  const [alerts, setAlerts] = useState<PriceAlert[]>(initialPriceAlerts);
+  const [alertMetalId, setAlertMetalId] = useState<MetalType>('gold_24k');
+  const [alertCondition, setAlertCondition] = useState<'below' | 'above'>('below');
+  const [alertTargetPrice, setAlertTargetPrice] = useState<number>(() => {
+    const metalObj = currentRates.find((m) => m.id === 'gold_24k') || currentRates[0];
+    const curr = currencyExchangeRates[selectedCurrency] || currencyExchangeRates['INR'];
+    return Number((metalObj.ratePerGram * curr.rate).toFixed(2));
+  });
+  const [alertEmail, setAlertEmail] = useState<string>('');
+  const [alertSuccessMessage, setAlertSuccessMessage] = useState<string | null>(null);
+  const [testAlertToast, setTestAlertToast] = useState<string | null>(null);
+
+  // Sync alert target price default when currency or metal changes
+  React.useEffect(() => {
+    const metalObj = currentRates.find((m) => m.id === alertMetalId) || currentRates[0];
+    setAlertTargetPrice(Number((metalObj.ratePerGram * currency.rate * mult).toFixed(2)));
+  }, [selectedCurrency, alertMetalId, weightUnit]);
 
   const formatPrice = (usdPerGram: number) => {
     const val = usdPerGram * currency.rate * mult;

@@ -10,7 +10,9 @@ import {
   TrendingUp,
   Phone,
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  MapPin,
+  MessageCircle
 } from 'lucide-react';
 
 interface FloatingConciergeButtonProps {
@@ -119,6 +121,36 @@ export const FloatingConciergeButton: React.FC<FloatingConciergeButtonProps> = (
               type="button"
               onClick={() => {
                 setIsOpen(false);
+                onNavigate('boutique-location-section');
+              }}
+              className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-[#FAF8F5] dark:hover:bg-[#20202C] text-xs font-semibold text-[#1C1917] dark:text-white border border-transparent hover:border-[#EAE5DC] dark:hover:border-[#2E2E3C] transition-all cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-[#B88B4A] dark:text-[#D4AF37]" />
+                Atelier Locations (Mumbai, Delhi)
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#78716C]" />
+            </button>
+
+            {/* Direct WhatsApp Concierge */}
+            <a
+              href="https://wa.me/919820088888?text=Hello%20Savarthi%20Concierge%2C%20I%20would%20like%20to%20inquire%20about%20high%20jewelry%20and%20live%20bullion%20rates."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 hover:bg-emerald-100 dark:hover:bg-emerald-950/60 text-xs font-semibold text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 transition-all cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                WhatsApp Live Concierge
+              </span>
+              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400">Online</span>
+            </a>
+
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
                 onOpenConsultation();
               }}
               className="w-full mt-2 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#B88B4A] hover:bg-[#9E7432] dark:bg-[#D4AF37] dark:hover:bg-[#C59B27] text-white dark:text-black font-semibold text-xs uppercase tracking-wider transition-colors shadow-md cursor-pointer"
@@ -131,10 +163,10 @@ export const FloatingConciergeButton: React.FC<FloatingConciergeButtonProps> = (
           <div className="mt-3 pt-3 border-t border-[#EAE5DC] dark:border-[#282834] flex items-center justify-between text-[10px] text-[#78716C] dark:text-[#A1A1AA]">
             <span className="flex items-center gap-1">
               <ShieldCheck className="w-3 h-3 text-[#B88B4A] dark:text-[#D4AF37]" />
-              Assay & GIA Inscribed
+              BIS 916 & GIA Inscribed
             </span>
             <span className="font-semibold text-[#1C1917] dark:text-white">
-              Mayfair • Paris Salon
+              Zaveri Bazaar • Bandra • Mayfair
             </span>
           </div>
         </div>

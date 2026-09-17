@@ -20,7 +20,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     fullName: '',
     email: '',
     phone: '',
-    city: 'London Mayfair Boutique',
+    city: 'Mumbai - Zaveri Bazaar Flagship',
     metalInterest: '22K Royal Bridal Gold',
     date: '',
     notes: ''
@@ -110,7 +110,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+44 7911 123456"
+                    placeholder="+91 98200 88888"
                     className="w-full px-3.5 py-2.5 bg-[#FAF8F5] dark:bg-[#202028] border border-[#D6CEBE] dark:border-[#383844] focus:border-[#B88B4A] dark:focus:border-[#D4AF37] rounded-lg text-xs text-[#1C1917] dark:text-white focus:outline-none"
                   />
                 </div>
@@ -126,11 +126,11 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     className="w-full px-3 py-2 bg-[#FAF8F5] dark:bg-[#202028] border border-[#D6CEBE] dark:border-[#383844] focus:border-[#B88B4A] dark:focus:border-[#D4AF37] rounded-lg text-xs text-[#1C1917] dark:text-white focus:outline-none"
                   >
-                    <option value="London Mayfair">London Mayfair Flagship</option>
-                    <option value="Paris Place Vendôme">Paris Place Vendôme</option>
-                    <option value="Mumbai High Street">Mumbai Heritage Flagship</option>
-                    <option value="Dubai Gold Souk">Dubai Gold & Diamond Park</option>
-                    <option value="Virtual Concierge">Virtual Video Consultation</option>
+                    <option value="Mumbai - Zaveri Bazaar Flagship">Mumbai – Zaveri Bazaar Flagship</option>
+                    <option value="Mumbai - Bandra West Atelier">Mumbai – Bandra West Salon</option>
+                    <option value="New Delhi - Defence Colony">New Delhi – Defence Colony</option>
+                    <option value="London - Old Bond Street, Mayfair">London – Old Bond St, Mayfair</option>
+                    <option value="Virtual Concierge">Virtual Video Salon (Pan-India & Global)</option>
                   </select>
                 </div>
 

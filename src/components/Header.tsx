@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SavarthiLogo } from './SavarthiLogo';
 import { ThemeToggle } from './ThemeToggle';
 import { DisplayCurrency, MetalRate, ThemeMode } from '../types';
+import { currencyExchangeRates } from '../data/jewelryData';
 import {
   Calendar,
   Menu,
@@ -10,7 +11,10 @@ import {
   Activity,
   Search,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Instagram,
+  MessageCircle,
+  MapPin
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -48,8 +52,9 @@ export const Header: React.FC<HeaderProps> = ({
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
 
+  const currencyInfo = currencyExchangeRates[selectedCurrency] || currencyExchangeRates['INR'];
+
   // Primary navigation matching the reference landing page style:
-  // "ALL JEWELRY", "HIGH JEWELRY", "FINE JEWELRY", "VINTAGE JEWELRY", "BY DESIGNERS", "ART OF LIVING" + Market Rates & Estimator
   const navLinks = [
     { id: 'collections-section', label: 'ALL JEWELRY' },
     { id: 'collections-section', label: 'HIGH JEWELRY', filter: 'high_jewelry' },
@@ -57,6 +62,8 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'collections-section', label: 'VINTAGE & BRIDAL', filter: 'bridal' },
     { id: 'market-rates-section', label: 'MARKET RATES' },
     { id: 'calculator-section', label: 'PRICE ESTIMATOR' },
+    { id: 'boutique-location-section', label: 'ATELIER LOCATIONS' },
+    { id: 'social-media-section', label: 'LOOKBOOK & SOCIAL' },
     { id: 'intro-section', label: 'ART OF LIVING' }
   ];
 
@@ -97,16 +104,38 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="font-semibold text-[#1C1917] dark:text-white">Live Vault Spot:</span>
-              <span>24K Gold ${gold24k?.ratePerGram || 86.45}/g</span>
+              <span>24K Gold {currencyInfo.symbol}{((gold24k?.ratePerGram || 86.45) * currencyInfo.rate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/g</span>
               <span className="text-[#8C6428] dark:text-[#D4AF37] font-semibold underline ml-0.5">
                 (Click for Bullion Bar)
               </span>
             </button>
           </div>
 
-          {/* Right: Currency, Weight, Theme, and Consultation */}
+          {/* Right: Currency, Weight, Theme, Social Icons, and Consultation */}
           <div className="flex items-center gap-2.5 sm:gap-4">
-            {/* Currency Selector */}
+            {/* Social Direct Links */}
+            <div className="hidden lg:flex items-center gap-2 border-r border-[#E0DACF] dark:border-[#383844] pr-3 text-[#78716C] dark:text-[#A1A1AA]">
+              <a
+                href="https://instagram.com/savarthijewelry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#E1306C] transition-colors"
+                title="Follow @savarthijewelry on Instagram"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://wa.me/919820088888?text=Hello%20Savarthi%20Concierge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#25D366] transition-colors"
+                title="Direct WhatsApp Atelier Concierge"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Currency Selector - INR First */}
             <div className="flex items-center gap-1 text-[11px]">
               <span className="text-[#78716C] dark:text-[#A1A1AA] hidden sm:inline">Currency:</span>
               <select
@@ -114,10 +143,10 @@ export const Header: React.FC<HeaderProps> = ({
                 onChange={(e) => onCurrencyChange(e.target.value as DisplayCurrency)}
                 className="bg-transparent border border-[#E0DACF] dark:border-[#383844] rounded px-1.5 py-0.5 text-[11px] font-semibold text-[#1C1917] dark:text-white focus:outline-none cursor-pointer"
               >
+                <option value="INR">INR (₹)</option>
                 <option value="USD">USD ($)</option>
                 <option value="EUR">EUR (€)</option>
                 <option value="GBP">GBP (£)</option>
-                <option value="INR">INR (₹)</option>
                 <option value="AED">AED (د.إ)</option>
               </select>
             </div>
@@ -131,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="bg-transparent border border-[#E0DACF] dark:border-[#383844] rounded px-1.5 py-0.5 text-[11px] font-semibold text-[#1C1917] dark:text-white focus:outline-none cursor-pointer"
               >
                 <option value="gram">Grams (g)</option>
-                <option value="tola">Tola</option>
+                <option value="tola">Tola (10g)</option>
                 <option value="oz">Troy Oz</option>
               </select>
             </div>

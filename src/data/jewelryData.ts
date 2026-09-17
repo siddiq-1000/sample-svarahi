@@ -2,10 +2,109 @@ import { MetalRate, HistoricalPricePoint, JewelryItem, BrandConfig, PriceAlert }
 
 export const initialBrandConfig: BrandConfig = {
   brandName: 'SAVARTHI',
-  tagline: 'Timeless Luxury Fine Jewelry & Pure Bullion Atelier',
-  establishedYear: 1988,
-  location: 'Mayfair • Paris • Mumbai • Dubai',
-  curatorNote: 'Crafted with master goldsmith devotion using certified pure gold, sterling silver, and ethically sourced gems.'
+  tagline: 'Haute Joaillerie & Certified Bullion Atelier',
+  establishedYear: 1888,
+  location: 'Zaveri Bazaar • Bandra West • South Extension • Mayfair',
+  curatorNote: 'Crafted with master goldsmith devotion using certified pure gold, sterling silver, and ethically sourced gems.',
+  flagshipAddress: 'Savarthi Heritage Palace, 42-48 Shaikh Memon Street, Zaveri Bazaar, Kalbadevi, Mumbai, Maharashtra 400002',
+  primaryPhone: '+91 (022) 6742-8888',
+  whatsappNumber: '+91 98200 88888',
+  contactEmail: 'concierge@savarthi.com',
+  socials: {
+    instagram: 'https://instagram.com/savarthijewelry',
+    whatsapp: 'https://wa.me/919820088888?text=Hello%20Savarthi%20Concierge%2C%20I%20am%20interested%20in%20high%20jewelry%20and%20live%20bullion%20rates.',
+    pinterest: 'https://pinterest.com/savarthijewelry',
+    youtube: 'https://youtube.com/@savarthijewelry',
+    facebook: 'https://facebook.com/savarthijewelry'
+  },
+  boutiques: [
+    {
+      id: 'mumbai-zaveri',
+      name: 'Savarthi Flagship Heritage Atelier',
+      city: 'Mumbai',
+      address: 'Savarthi Heritage Palace, 42-48 Shaikh Memon Street, Zaveri Bazaar, Kalbadevi',
+      state: 'Maharashtra',
+      pincode: '400002',
+      country: 'India',
+      landmark: 'Opposite Historic Mumbadevi Temple Arch',
+      phone: '+91 (022) 6742-8888',
+      whatsapp: '+91 98200 88888',
+      hours: 'Mon – Sat: 10:30 AM – 8:30 PM (Sunday Private Appointments)',
+      isFlagship: true,
+      googleMapsUrl: 'https://maps.google.com/?q=Zaveri+Bazaar+Mumbai',
+      image: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80',
+      amenities: [
+        'Valet Parking Available',
+        'BIS Hallmarking Purity Testing Lab',
+        'Private Vault Viewing Room',
+        'Bridal Trousseau Lounge',
+        'Bullion Exchange & Delivery Desk'
+      ]
+    },
+    {
+      id: 'mumbai-bandra',
+      name: 'Savarthi Haute Joaillerie Salon',
+      city: 'Mumbai',
+      address: 'Plot 18, Waterfield Road & Linking Road Junction, Bandra West',
+      state: 'Maharashtra',
+      pincode: '400050',
+      country: 'India',
+      landmark: 'Near Turner Road Luxury Quarter',
+      phone: '+91 (022) 2640-1888',
+      whatsapp: '+91 98200 88888',
+      hours: 'Mon – Sun: 11:00 AM – 9:00 PM',
+      isFlagship: false,
+      googleMapsUrl: 'https://maps.google.com/?q=Bandra+West+Mumbai',
+      image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80',
+      amenities: [
+        'High Jewelry Solitaire Suite',
+        'Champagne Hospitality Lounge',
+        'VIP Bespoke Designer Consultations'
+      ]
+    },
+    {
+      id: 'delhi-southex',
+      name: 'Savarthi Royal Bridal Pavilion',
+      city: 'New Delhi',
+      address: 'D-28, South Extension Part II, Ring Road',
+      state: 'Delhi',
+      pincode: '110049',
+      country: 'India',
+      landmark: 'Near South Extension Metro Station Gate 2',
+      phone: '+91 (011) 4164-8888',
+      whatsapp: '+91 98200 88888',
+      hours: 'Tue – Sun: 11:00 AM – 8:30 PM (Closed Monday)',
+      isFlagship: false,
+      googleMapsUrl: 'https://maps.google.com/?q=South+Extension+New+Delhi',
+      image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80',
+      amenities: [
+        'Royal Kundan & Polki Heritage Gallery',
+        'Master Gemologist Valuation',
+        'Bridal Styling Suite'
+      ]
+    },
+    {
+      id: 'london-mayfair',
+      name: 'Savarthi International Private Suite',
+      city: 'London',
+      address: '14 Old Bond Street, Mayfair',
+      state: 'Greater London',
+      pincode: 'W1S 4PP',
+      country: 'United Kingdom',
+      landmark: 'Mayfair Luxury Quarter',
+      phone: '+44 20 7946 0888',
+      whatsapp: '+91 98200 88888',
+      hours: 'By Private Appointment Only',
+      isFlagship: false,
+      googleMapsUrl: 'https://maps.google.com/?q=Old+Bond+Street+London',
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+      amenities: [
+        'GIA Certified Diamond Inscription',
+        'Worldwide Insured Custody',
+        'Private Family Vault'
+      ]
+    }
+  ]
 };
 
 export const currentMetalRates: MetalRate[] = [
@@ -343,12 +442,71 @@ export const initialPriceAlerts: PriceAlert[] = [
 ];
 
 export const currencyExchangeRates: Record<string, { symbol: string; rate: number; name: string }> = {
-  USD: { symbol: '$', rate: 1.0, name: 'US Dollar' },
-  EUR: { symbol: '€', rate: 0.92, name: 'Euro' },
-  GBP: { symbol: '£', rate: 0.79, name: 'British Pound' },
-  INR: { symbol: '₹', rate: 84.50, name: 'Indian Rupee' },
-  AED: { symbol: 'AED ', rate: 3.67, name: 'UAE Dirham' }
+  INR: { symbol: '₹', rate: 84.50, name: 'Indian Rupee (₹)' },
+  USD: { symbol: '$', rate: 1.0, name: 'US Dollar ($)' },
+  EUR: { symbol: '€', rate: 0.92, name: 'Euro (€)' },
+  GBP: { symbol: '£', rate: 0.79, name: 'British Pound (£)' },
+  AED: { symbol: 'AED ', rate: 3.67, name: 'UAE Dirham (AED)' }
 };
+
+export interface SocialFeedPost {
+  id: string;
+  platform: 'instagram' | 'pinterest' | 'youtube';
+  title: string;
+  caption: string;
+  image: string;
+  likes: string;
+  comments: string;
+  url: string;
+  tag: string;
+}
+
+export const socialFeedPosts: SocialFeedPost[] = [
+  {
+    id: 'post-1',
+    platform: 'instagram',
+    title: 'The Royal Bridal Polki Choker',
+    caption: 'Handcrafted in 22K Saffron Gold with natural uncut syndicate diamonds and emerald drops. Created in our Zaveri Bazaar atelier. #SavarthiBridal #HauteJoaillerie',
+    image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=800&q=80',
+    likes: '14.2K',
+    comments: '342',
+    url: 'https://instagram.com/savarthijewelry',
+    tag: '@savarthijewelry'
+  },
+  {
+    id: 'post-2',
+    platform: 'instagram',
+    title: 'Cascading Triple Rivière in Platinum 950',
+    caption: '38.50 carats of calibrated D-F VVS diamonds catching the evening twilight. Every stone precision seated by hand. #DiamondRivière #SavarthiSolitaire',
+    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
+    likes: '22.8K',
+    comments: '519',
+    url: 'https://instagram.com/savarthijewelry',
+    tag: '@savarthijewelry'
+  },
+  {
+    id: 'post-3',
+    platform: 'instagram',
+    title: 'Behind the Bench: Molten 24K Pure Gold',
+    caption: 'Assay-tested 999.9 sovereign bullion pouring at 1064°C into hand-carved ingot molds. Purity you can physically feel. #BullionArtisan #GoldSmelting',
+    image: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=800&q=80',
+    likes: '31.5K',
+    comments: '884',
+    url: 'https://instagram.com/savarthijewelry',
+    tag: '@savarthijewelry'
+  },
+  {
+    id: 'post-4',
+    platform: 'pinterest',
+    title: 'Heritage Bridal Moodboard 2026',
+    caption: 'Bespoke Rajasthani Meenakari reverses paired with uncut diamond necklace suites for high-society weddings. Save to your bridal board.',
+    image: 'https://images.unsplash.com/photo-1611591475817-d5d852233fec?auto=format&fit=crop&w=800&q=80',
+    likes: '8.7K Saves',
+    comments: '112',
+    url: 'https://pinterest.com/savarthijewelry',
+    tag: 'Pin to Board'
+  }
+];
 
 export const hallmarkStandards = [
   {

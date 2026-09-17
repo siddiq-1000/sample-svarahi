@@ -4,7 +4,12 @@ import { BrandConfig } from '../types';
 import {
   MapPin,
   ArrowRight,
-  Check
+  Check,
+  Instagram,
+  MessageCircle,
+  Phone,
+  Mail,
+  Youtube
 } from 'lucide-react';
 
 interface FooterProps {
@@ -30,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-[#E2DDD3] dark:border-[#282834]">
-          {/* Col 1: Brand & Logo (5 cols) */}
+          {/* Col 1: Brand, Flagship Location & Social Media (5 cols) */}
           <div className="lg:col-span-5 space-y-3.5">
             <SavarthiLogo brandName={brandConfig.brandName} size="lg" />
 
@@ -38,9 +43,86 @@ export const Footer: React.FC<FooterProps> = ({
               "Honoring the ancient goldsmithing heritage through pure metals and contemporary precision."
             </p>
 
-            <div className="flex items-center gap-2 pt-1 text-xs text-[#57534E] dark:text-[#D4D4D8]">
-              <MapPin className="w-3.5 h-3.5 text-[#B88B4A] dark:text-[#D4AF37]" />
-              <span>{brandConfig.location}</span>
+            {/* Flagship Location Details */}
+            <div className="p-3 rounded-xl bg-white dark:bg-[#18181F] border border-[#EAE5DC] dark:border-[#2E2E38] max-w-md space-y-2 text-xs">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#B88B4A] dark:text-[#D4AF37] flex-shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-[#1C1917] dark:text-white block">Flagship Atelier & Vault:</span>
+                  <span className="text-[#57534E] dark:text-[#D4D4D8] leading-relaxed">
+                    {brandConfig.flagshipAddress || '42-48 Shaikh Memon Street, Zaveri Bazaar, Mumbai 400002'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4 pt-1 text-[11px] text-[#78716C] dark:text-[#A1A1AA]">
+                <span className="flex items-center gap-1 font-medium text-[#1C1917] dark:text-white">
+                  <Phone className="w-3 h-3 text-[#B88B4A] dark:text-[#D4AF37]" />
+                  {brandConfig.primaryPhone || '+91 (022) 6742-8888'}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Mail className="w-3 h-3 text-[#B88B4A] dark:text-[#D4AF37]" />
+                  {brandConfig.contactEmail || 'concierge@savarthi.com'}
+                </span>
+              </div>
+            </div>
+
+            {/* Social Media Integration Links */}
+            <div className="pt-2">
+              <div className="text-[11px] uppercase tracking-wider font-bold text-[#1C1917] dark:text-white mb-2">
+                Follow Our Artisanal Journey:
+              </div>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={brandConfig.socials?.instagram || 'https://instagram.com/savarthijewelry'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white dark:bg-[#1E1E26] hover:bg-[#B88B4A] hover:text-white dark:hover:bg-[#D4AF37] dark:hover:text-black border border-[#D6CEBE] dark:border-[#383848] flex items-center justify-center text-[#57534E] dark:text-[#D4D4D8] transition-all"
+                  title="Instagram: @savarthijewelry"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={brandConfig.socials?.whatsapp || 'https://wa.me/919820088888'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white dark:bg-[#1E1E26] hover:bg-emerald-600 hover:text-white border border-[#D6CEBE] dark:border-[#383848] flex items-center justify-center text-[#57534E] dark:text-[#D4D4D8] transition-all"
+                  title="WhatsApp Live Concierge"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={brandConfig.socials?.youtube || 'https://youtube.com/@savarthijewelry'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white dark:bg-[#1E1E26] hover:bg-[#FF0000] hover:text-white border border-[#D6CEBE] dark:border-[#383848] flex items-center justify-center text-[#57534E] dark:text-[#D4D4D8] transition-all"
+                  title="YouTube Goldsmithing Channel"
+                >
+                  <Youtube className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={brandConfig.socials?.pinterest || 'https://pinterest.com/savarthijewelry'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white dark:bg-[#1E1E26] hover:bg-[#E60023] hover:text-white border border-[#D6CEBE] dark:border-[#383848] flex items-center justify-center text-[#57534E] dark:text-[#D4D4D8] transition-all font-bold text-xs"
+                  title="Pinterest Bridal Moodboard"
+                >
+                  P
+                </a>
+
+                <a
+                  href={brandConfig.socials?.facebook || 'https://facebook.com/savarthijewelry'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white dark:bg-[#1E1E26] hover:bg-[#1877F2] hover:text-white border border-[#D6CEBE] dark:border-[#383848] flex items-center justify-center text-[#57534E] dark:text-[#D4D4D8] transition-all font-bold text-xs"
+                  title="Facebook Maison Page"
+                >
+                  f
+                </a>
+              </div>
             </div>
           </div>
 
@@ -65,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('bestsellers-section')}
                   className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  Best Sellers
+                  Fine Jewelry
                 </button>
               </li>
               <li>
@@ -74,16 +156,25 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('collections-section')}
                   className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  Rings & Solitaires
+                  High Jewelry & Solitaires
                 </button>
               </li>
               <li>
                 <button
                   type="button"
-                  onClick={() => onNavigate('collections-section')}
+                  onClick={() => onNavigate('boutique-location-section')}
+                  className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer font-semibold text-[#B88B4A] dark:text-[#D4AF37]"
+                >
+                  Find a Boutique
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('social-media-section')}
                   className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  Bracelets & Kadas
+                  Social Lookbook
                 </button>
               </li>
             </ul>
@@ -107,10 +198,10 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   type="button"
-                  onClick={() => onNavigate('market-graph-section')}
+                  onClick={() => onNavigate('market-rates-section')}
                   className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
                 >
-                  Pricing Graph
+                  Bullion Pricing Graph
                 </button>
               </li>
               <li>
@@ -120,6 +211,15 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
                 >
                   Email Price Alerts
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('calculator-section')}
+                  className="hover:text-[#1C1917] dark:hover:text-white transition-colors cursor-pointer"
+                >
+                  Price Estimator (₹)
                 </button>
               </li>
               <li>
@@ -140,7 +240,7 @@ export const Footer: React.FC<FooterProps> = ({
               Atelier Newsletter
             </h4>
             <p className="text-xs text-[#78716C] dark:text-[#A1A1AA] leading-relaxed">
-              Receive private salon invitations and weekly bullion market digests.
+              Receive private salon invitations in Mumbai, Delhi, and London, plus daily gold bullion rate digests.
             </p>
 
             {subscribed ? (
@@ -170,7 +270,7 @@ export const Footer: React.FC<FooterProps> = ({
             )}
 
             <div className="pt-1 text-[11px] text-[#A8A29E] dark:text-[#71717A]">
-              Assayed by LBMA & GIA • Certified Conflict-Free
+              Assayed by LBMA, BIS 916 & GIA • Certified Conflict-Free
             </div>
           </div>
         </div>
@@ -178,7 +278,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Strip */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#78716C] dark:text-[#A1A1AA]">
           <div>
-            <span>© {new Date().getFullYear()} {brandConfig.brandName}. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} {brandConfig.brandName}. All rights reserved. Flagship in Zaveri Bazaar, Mumbai.</span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -191,3 +291,4 @@ export const Footer: React.FC<FooterProps> = ({
     </footer>
   );
 };
+

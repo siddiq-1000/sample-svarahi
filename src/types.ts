@@ -43,12 +43,42 @@ export interface JewelryItem {
   isHandcrafted: boolean;
 }
 
+export interface BoutiqueLocation {
+  id: string;
+  name: string;
+  city: string;
+  address: string;
+  state: string;
+  pincode: string;
+  country: string;
+  landmark: string;
+  phone: string;
+  whatsapp: string;
+  hours: string;
+  isFlagship: boolean;
+  googleMapsUrl: string;
+  image: string;
+  amenities: string[];
+}
+
 export interface BrandConfig {
   brandName: string;
   tagline: string;
   establishedYear: number;
   location: string;
   curatorNote: string;
+  flagshipAddress: string;
+  primaryPhone: string;
+  whatsappNumber: string;
+  contactEmail: string;
+  socials: {
+    instagram: string;
+    whatsapp: string;
+    pinterest: string;
+    youtube: string;
+    facebook: string;
+  };
+  boutiques: BoutiqueLocation[];
 }
 
 export type TimeframePeriod = '24H' | '7D' | '1M' | '6M' | '1Y';

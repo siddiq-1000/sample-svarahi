@@ -9,6 +9,8 @@ import { CompanyIntroduction } from './components/CompanyIntroduction';
 import { CraftsmanshipVideo } from './components/CraftsmanshipVideo';
 import { JewelryCalculator } from './components/JewelryCalculator';
 import { HallmarkGuide } from './components/HallmarkGuide';
+import { BoutiqueLocation } from './components/BoutiqueLocation';
+import { SocialMediaHub } from './components/SocialMediaHub';
 import { Footer } from './components/Footer';
 import { JewelryDetailsModal } from './components/JewelryDetailsModal';
 import { ConsultationModal } from './components/ConsultationModal';
@@ -21,7 +23,7 @@ export default function App() {
     brandName: 'SAVARTHI'
   });
   const [rates, setRates] = useState<MetalRate[]>(currentMetalRates);
-  const [selectedCurrency, setSelectedCurrency] = useState<DisplayCurrency>('USD');
+  const [selectedCurrency, setSelectedCurrency] = useState<DisplayCurrency>('INR');
   const [weightUnit, setWeightUnit] = useState<'gram' | 'tola' | 'oz'>('gram');
   const [activeSection, setActiveSection] = useState<string>('hero-section');
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -185,7 +187,20 @@ export default function App() {
         brandConfig={brandConfig}
       />
 
-      {/* 9. Refined Footer */}
+      {/* 9. Boutique & Atelier Locations (Mumbai Flagship, Bandra, Delhi) */}
+      <BoutiqueLocation
+        brandConfig={brandConfig}
+        onBookAppointmentAtLocation={(locName) => {
+          setConsultationOpen(true);
+        }}
+      />
+
+      {/* 10. Social Media Integration & Curated Visual Feed */}
+      <SocialMediaHub
+        brandConfig={brandConfig}
+      />
+
+      {/* 11. Refined Footer with Flagship Location & Social Links */}
       <Footer
         brandConfig={brandConfig}
         onNavigate={handleNavigate}
