@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', serif;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    /* Light Theme */
+    --bg-main: #FAF8F5;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F5F2EB;
+    --border-color: #EAE5DC;
+    --border-hover: #D6CEBE;
+    --text-primary: #1C1917;
+    --text-secondary: #78716C;
+    --accent: #B88B4A;
+    --accent-hover: #9E7432;
+  }
+
+  .dark {
+    /* Dark Theme */
+    --bg-main: #101014;
+    --bg-card: #18181D;
+    --bg-subtle: #1E1E24;
+    --border-color: #2E2E38;
+    --border-hover: #424250;
+    --text-primary: #F4F4F5;
+    --text-secondary: #A1A1AA;
+    --accent: #D4AF37;
+    --accent-hover: #C59B27;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Warm Gold & Metal Accents */
+.gold-text {
+  color: var(--accent);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #8C6428 0%, #B88B4A 50%, #754F18 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .gold-gradient-text {
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Magnifying Glass Zoom Effect */
+.zoom-lens {
+  position: absolute;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(184, 139, 74, 0.25);
+  background-repeat: no-repeat;
+  transition: opacity 0.15s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

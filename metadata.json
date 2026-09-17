@@ -1,0 +1,6 @@
+{
+  "name": "Savarthi Fine Jewelry",
+  "description": "Bespoke fine jewelry showcase with live market bullion rates, interactive precious metal price graphs, artisan heritage, and luxury collections in gold, obsidian, and sterling silver.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
